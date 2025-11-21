@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfObject: Tomato(Clone)
   uiSprite: {fileID: 2800000, guid: 3a785207ff6441d43b8329e279102500, type: 3}
-  placementObject: {fileID: 202948511126200573, guid: 01459787a9c7fd641816127ec7241bd8, type: 3}
+  placementObject: {fileID: 8810129209879765246, guid: 01459787a9c7fd641816127ec7241bd8, type: 3}
   placementCosts: 0

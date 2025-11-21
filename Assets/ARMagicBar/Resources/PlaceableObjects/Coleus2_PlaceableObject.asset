@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfObject: Coleus2(Clone)
   uiSprite: {fileID: 2800000, guid: 0e127c7b5ecd70145aa8d1895ad3e265, type: 3}
-  placementObject: {fileID: 7560210762572739948, guid: 910115d20c01a2140a75cd2f4d6b7f59, type: 3}
+  placementObject: {fileID: 7003738806418877093, guid: 910115d20c01a2140a75cd2f4d6b7f59, type: 3}
   placementCosts: 0

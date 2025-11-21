@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfObject: Monstera(Clone)
   uiSprite: {fileID: 2800000, guid: cc3d7a10bdd5653428db7c4db6c8ad33, type: 3}
-  placementObject: {fileID: 512620724187421124, guid: 61e20a0a786b56c479b120765207b506, type: 3}
+  placementObject: {fileID: 1592916425098223238, guid: 61e20a0a786b56c479b120765207b506, type: 3}
   placementCosts: 0

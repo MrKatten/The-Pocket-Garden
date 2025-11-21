@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfObject: Cucumber(Clone)
   uiSprite: {fileID: 2800000, guid: 3b458f750704f8640b54324aee160b71, type: 3}
-  placementObject: {fileID: 869980240569139440, guid: f3c8c802e3b96b943920222284a0f98e, type: 3}
+  placementObject: {fileID: 5628596157075194947, guid: f3c8c802e3b96b943920222284a0f98e, type: 3}
   placementCosts: 0

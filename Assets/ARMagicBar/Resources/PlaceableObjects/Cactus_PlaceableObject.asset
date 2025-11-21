@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfObject: Cactus(Clone)
   uiSprite: {fileID: 2800000, guid: dfcd157db00cd2a47b9842ac08099cf8, type: 3}
-  placementObject: {fileID: 5510678830614889441, guid: b5183ae8d43abbb458844cfbc1485b73, type: 3}
+  placementObject: {fileID: 4901171641799227509, guid: b5183ae8d43abbb458844cfbc1485b73, type: 3}
   placementCosts: 0
