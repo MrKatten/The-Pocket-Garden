@@ -529,9 +529,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6428654165620238453}
   - component: {fileID: 5873217047238475103}
+  - component: {fileID: 3216716699912306208}
   m_Layer: 0
   m_Name: Cactus
-  m_TagString: Untagged
+  m_TagString: ARObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,6 +574,27 @@ MonoBehaviour:
   waterParticles: {fileID: 0}
   growthText: {fileID: 1475120207324608561}
   waterButton: {fileID: 1470564702905742804}
+--- !u!65 &3216716699912306208
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425402828482220893}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.20143357, y: 0.25274795, z: 0.18162042}
+  m_Center: {x: -0.0046699494, y: 0.11677715, z: -0.000000059604645}
 --- !u!1 &3821698679582107143
 GameObject:
   m_ObjectHideFlags: 0

@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 7643181049078854640}
   m_Layer: 0
   m_Name: Cucumber
-  m_TagString: Untagged
+  m_TagString: ARObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
