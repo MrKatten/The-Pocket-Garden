@@ -2,15 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class PlaceObjectOnPlane : MonoBehaviour
 {
     [SerializeField] private GameObject placementIndicator;
-
     [SerializeField] public GameObject objectToPlace;
-
     [SerializeField] private GameObject[] objectsList;
+    [SerializeField] private InputActionAsset ARInputActions;
+    private InputAction placeObjectAction;
 
     private ARRaycastManager arRaycastManager;
     private Pose placementPose;
@@ -19,6 +20,11 @@ public class PlaceObjectOnPlane : MonoBehaviour
     void Awake()
     {
         arRaycastManager = GetComponent<ARRaycastManager>();
+        var actionMap = ARInputActions.FindActionMap("ARControls");
+        placeObjectAction = actionMap.FindAction("PlaceObject");
+        placeObjectAction.Enable();
+        Debug.Log(actionMap);
+        Debug.Log(placeObjectAction);
     }
 
     void Update()
@@ -26,10 +32,11 @@ public class PlaceObjectOnPlane : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        if (placementPoseIsValid && ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(1))))
+        placeObjectAction.performed += ctx =>
         {
+            Debug.Log("place");
             PlaceObject();
-        }
+        };
     }
 
     private void UpdatePlacementPose()
