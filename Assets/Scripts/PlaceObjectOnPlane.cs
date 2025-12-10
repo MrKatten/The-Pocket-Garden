@@ -4,6 +4,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using UnityEditor.Rendering;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class PlaceObjectOnPlane : MonoBehaviour
@@ -13,10 +14,12 @@ public class PlaceObjectOnPlane : MonoBehaviour
     [SerializeField] private GameObject[] objectsList;
     [SerializeField] private InputActionAsset ARInputActions;
     private InputAction placeObjectAction;
+    [SerializeField] private ARInteractionManager interactionManager;
 
     private ARRaycastManager arRaycastManager;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
+    private bool canPlaceObject = true;
 
     void Awake()
     {
@@ -35,10 +38,11 @@ public class PlaceObjectOnPlane : MonoBehaviour
 
         placeObjectAction.performed += ctx =>
         {
+            if (!canPlaceObject) return;
             if (EventSystem.current.IsPointerOverGameObject())
             {
                 Debug.Log("Клик был на UI элементе - игнорируем");
-                return; // Не обрабатываем клик дальше
+                return;
             }
             else if (Touchscreen.current != null) 
             {
@@ -105,5 +109,9 @@ public class PlaceObjectOnPlane : MonoBehaviour
     public void ChangeObjectToPlace(int id)
     {
         objectToPlace = objectsList[id];
+    }
+    public void BlockPlacement(bool block)
+    {
+        canPlaceObject = !block;
     }
 }

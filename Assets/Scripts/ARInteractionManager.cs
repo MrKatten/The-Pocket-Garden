@@ -2,24 +2,34 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using System.Collections.Generic;
 
 public class ARInteractionManager : MonoBehaviour
 {
     [SerializeField] private Camera arCamera;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float scaleSpeed = 0.01f;
+    [SerializeField] private float moveSpeed = 0.01f;
     [SerializeField] private InputActionAsset ARInputActions;
+    [SerializeField] private PlaceObjectOnPlane placeObjectManager;
 
     private GameObject selectedObject;
     private bool isObjectSelected = false;
     private Vector2 lastTouchPosition;
     private Vector2 touchZeroStartPos;
     private Vector2 touchOneStartPos;
+    private bool isMovingObject = false;
+    private bool isRotatingObject = false;
+    private bool isScalingObject = false;
+
+    private ARRaycastManager arRaycastManager;
+    private List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     // Input Actions
     private InputAction touchStartAction;
     private InputAction touchPositionAction;
     private InputAction touchDeltaAction;
+    //private InputAction touchEndAction;
 
     void Awake()
     {
@@ -38,6 +48,10 @@ public class ARInteractionManager : MonoBehaviour
 
     void Update()
     {
+        if (isMovingObject && selectedObject != null)
+        {
+            UpdateObjectPosition();
+        }
         // Обработка масштабирования двумя пальцами
         HandleTwoFingerScaling();
     }
@@ -214,7 +228,32 @@ public class ARInteractionManager : MonoBehaviour
             selectedObject = null;
         }
     }
+    private void UpdateObjectPosition()
+    {
+        if (selectedObject == null || !isMovingObject) return;
 
+        if (touchPositionAction != null && arRaycastManager != null)
+        {
+            Vector2 touchPosition = touchPositionAction.ReadValue<Vector2>();
+
+            // Ищем плоскость под пальцем
+            if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.Planes))
+            {
+                Pose hitPose = hits[0].pose;
+
+                // Плавное перемещение
+                Vector3 targetPosition = hitPose.position;
+                selectedObject.transform.position = Vector3.Lerp(
+                    selectedObject.transform.position,
+                    targetPosition,
+                    moveSpeed
+                );
+
+                // Сохраняем текущую позицию
+                lastTouchPosition = touchPosition;
+            }
+        }
+    }
     private void HandleRotation(Vector2 deltaPosition)
     {
         if (selectedObject == null) return;
