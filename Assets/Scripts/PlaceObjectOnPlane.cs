@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class PlaceObjectOnPlane : MonoBehaviour
@@ -34,8 +35,24 @@ public class PlaceObjectOnPlane : MonoBehaviour
 
         placeObjectAction.performed += ctx =>
         {
-            Debug.Log("place");
-            PlaceObject();
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Debug.Log("Клик был на UI элементе - игнорируем");
+                return; // Не обрабатываем клик дальше
+            }
+            else if (Touchscreen.current != null) 
+            {
+                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                {
+                    Debug.Log("Тап был на UI элементе - игнорируем");
+                    return;
+                }
+            }
+            else
+            {
+                Debug.Log("place");
+                PlaceObject();
+            }
         };
     }
 

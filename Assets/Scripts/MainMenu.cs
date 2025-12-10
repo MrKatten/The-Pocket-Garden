@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
@@ -8,6 +9,9 @@ public class MainMenu : MonoBehaviour
 //    [SerializeField] Sprite clicked;
 //    [SerializeField] Sprite normal;
     Sprite btnSprite;
+    [SerializeField] GameObject _mainmenu;
+    [SerializeField] GameObject _achievement;
+    [SerializeField] GameObject _settings;
     void Start()
     {
         
@@ -26,11 +30,23 @@ public class MainMenu : MonoBehaviour
     }
     public void Settings()
     {
-        Debug.Log("Settings");
+        _mainmenu.SetActive(false);
+        _settings.SetActive(true);
     }
     public void Quit()
     {
         Application.Quit();
+    }
+    public void Achievement()
+    {
+        _mainmenu.SetActive(false);
+        _achievement.SetActive(true);
+    }
+    public void Back()
+    {
+        _mainmenu.SetActive(true);
+        _achievement.SetActive(false);
+        _settings.SetActive(false);
     }
     //IEnumerator Wait()
     //{
