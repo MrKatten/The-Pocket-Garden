@@ -1557,63 +1557,6 @@ MonoBehaviour:
   _panel: {fileID: 1829423256}
   _imageHidden: {fileID: 1453810886}
   _imageUnhidden: {fileID: 2124584309}
---- !u!1001 &924210316402198425
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6353795726712809567, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353795726712809567, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353795726712809567, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353795726712809567, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353795726712809567, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353795726712809567, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353795726712809567, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353795726712809567, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353795726712809567, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353795726712809567, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8357024542707296867, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
-      propertyPath: m_Name
-      value: Water_Splash_A
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
 --- !u!1001 &5188468270116168377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1905,4 +1848,3 @@ SceneRoots:
   - {fileID: 1339942484}
   - {fileID: 1862885830}
   - {fileID: 1783319468}
-  - {fileID: 924210316402198425}

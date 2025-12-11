@@ -142,9 +142,7 @@ public class PlantGrowth : MonoBehaviour
         if (growthText != null)
         {
             float progress = Mathf.Clamp01(currentGrowthTime / growthTime);
-            growthText.text = $"Прогресс роста: {progress * 100:F1}%\n" +
-                            $"Стадия: {currentStage + 1}/{plantStages.Length}\n" +
-                            $"Время: {Mathf.FloorToInt(currentGrowthTime)}/{growthTime}сек";
+            growthText.text = $"Прогресс роста: {progress * 100:F1}%\n";
         }
     }
 
