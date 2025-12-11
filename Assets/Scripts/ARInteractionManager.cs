@@ -29,7 +29,7 @@ public class ARInteractionManager : MonoBehaviour
     private InputAction touchStartAction;
     private InputAction touchPositionAction;
     private InputAction touchDeltaAction;
-    //private InputAction touchEndAction;
+    private InputAction touchEndAction;
 
     void Awake()
     {
@@ -64,6 +64,7 @@ public class ARInteractionManager : MonoBehaviour
         touchStartAction = arControlsMap.FindAction("TouchStart");
         touchPositionAction = arControlsMap.FindAction("TouchPosition");
         touchDeltaAction = arControlsMap.FindAction("TouchDelta");
+        touchEndAction = arControlsMap.FindAction("TouchEnd");
     }
 
     private void EnableInputActions()
@@ -71,12 +72,18 @@ public class ARInteractionManager : MonoBehaviour
         touchStartAction?.Enable();
         touchPositionAction?.Enable();
         touchDeltaAction?.Enable();
+        touchEndAction?.Enable();
 
         // Подписываемся на события
         if (touchStartAction != null)
         {
             touchStartAction.started += OnTouchStarted;
             touchStartAction.canceled += OnTouchCanceled;
+        }
+
+        if (touchEndAction != null)
+        {
+            touchEndAction.performed += OnTouchEnded;
         }
 
         if (touchDeltaAction != null)
@@ -99,9 +106,15 @@ public class ARInteractionManager : MonoBehaviour
             touchDeltaAction.performed -= OnTouchMoved;
         }
 
+        if (touchEndAction != null)
+        {
+            touchEndAction.performed -= OnTouchEnded;
+        }
+
         touchStartAction?.Disable();
         touchPositionAction?.Disable();
         touchDeltaAction?.Disable();
+        touchEndAction?.Disable();
     }
 
     private void OnTouchStarted(InputAction.CallbackContext context)
@@ -113,7 +126,18 @@ public class ARInteractionManager : MonoBehaviour
             lastTouchPosition = touchPosition;
         }
     }
-
+    private void OnTouchEnded(InputAction.CallbackContext context)
+    {
+        ResetInteractionState();
+    }
+    private void ResetInteractionState()
+    {
+        isMovingObject = false;
+        isRotatingObject = false;
+        isScalingObject = false;
+        touchZeroStartPos = Vector2.zero;
+        touchOneStartPos = Vector2.zero;
+    }
     private void OnTouchMoved(InputAction.CallbackContext context)
     {
         if (isObjectSelected && selectedObject != null)

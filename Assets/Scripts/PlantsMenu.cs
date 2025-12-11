@@ -15,7 +15,10 @@ public class PlantsMenu : MonoBehaviour
 
     private void Awake()
     {
-        
+        moneyText.text = money.ToString();
+    }
+    public void UpdateMoneyUI()
+    {
         moneyText.text = money.ToString();
     }
     public void CactusButton()

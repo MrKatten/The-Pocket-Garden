@@ -827,9 +827,10 @@ MonoBehaviour:
   plantStages:
   - {fileID: 737371475719849568}
   - {fileID: 1320714973715268141}
-  waterParticles: {fileID: 0}
+  waterParticlesPrefab: {fileID: 8357024542707296867, guid: 90c49c6f548c9e24e93e66b33e3c3c5e, type: 3}
   growthText: {fileID: 3178375784243293223}
   waterButton: {fileID: 6990489810216190294}
+  plantsMenu: {fileID: 4864483080422009544, guid: f692c0a30a732d346a472295a4297744, type: 3}
 --- !u!1001 &5618729777390935691
 PrefabInstance:
   m_ObjectHideFlags: 0

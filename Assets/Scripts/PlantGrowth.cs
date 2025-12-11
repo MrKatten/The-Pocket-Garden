@@ -1,17 +1,19 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using System.Data.SqlTypes;
 
 public class PlantGrowth : MonoBehaviour
 {
     [Header("Настройки роста")]
     public float growthTime = 60f; // Время роста в секундах
     public GameObject[] plantStages; // Массив моделей стадий роста
-    public ParticleSystem waterParticles; // Эффект полива (опционально)
+    public GameObject waterParticlesPrefab; // Эффект полива (опционально)
 
     [Header("UI элементы")]
     public TMP_Text growthText; // Текст для отображения прогресса
     public UnityEngine.UI.Button waterButton; // Кнопка полива
+    [SerializeField] public PlantsMenu plantsMenu;
 
     private float currentGrowthTime = 0f;
     private int currentStage = 0;
@@ -29,6 +31,7 @@ public class PlantGrowth : MonoBehaviour
 
     void Start()
     {
+        plantsMenu = FindFirstObjectByType<PlantsMenu>();
         ResetPlant();
         LoadPlantData();
         UpdatePlantModel();
@@ -69,11 +72,19 @@ public class PlantGrowth : MonoBehaviour
             isWatered = true;
             waterButton.gameObject.SetActive(false);
             StartGrowth();
-
+            plantsMenu.money += 10;
+            plantsMenu.UpdateMoneyUI();
             // Воспроизводим эффект полива
-            if (waterParticles != null)
+            if (waterParticlesPrefab != null)
             {
-                waterParticles.Play();
+                GameObject particles = Instantiate(
+                waterParticlesPrefab,
+                transform.position + new Vector3(0,0.1f,0),
+                Quaternion.identity
+            );
+
+                // Автоуничтожение
+                Destroy(particles, 2f);
             }
 
             SavePlantData();
@@ -141,7 +152,8 @@ public class PlantGrowth : MonoBehaviour
     {
         isGrowing = false;
         Debug.Log("Рост растения завершен!");
-
+        plantsMenu.money += 20;
+        plantsMenu.UpdateMoneyUI();
         if (growthText != null)
         {
             growthText.text = "Рост завершен!";

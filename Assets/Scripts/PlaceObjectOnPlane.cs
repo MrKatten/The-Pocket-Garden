@@ -4,7 +4,6 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
-using UnityEditor.Rendering;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class PlaceObjectOnPlane : MonoBehaviour
